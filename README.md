@@ -27,10 +27,8 @@ The pipeline automatically builds, pushes, and deploys a Dockerized Node.js appl
 ---
 
 ## 🧭 Architecture Diagram (PlantUML)
-```
-![Banner](images/Architecture_Diagram.png)
 
-```
+![Banner](images/Architecture_Diagram.png)
 
 ---
 
