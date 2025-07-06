@@ -1,7 +1,4 @@
 # CI/CD Pipeline: Node.js App Deployment on AWS EKS via GitHub Actions
-
-![Banner](images/workflow-success.png)
-
 ---
 
 ## 📌 Project Overview
