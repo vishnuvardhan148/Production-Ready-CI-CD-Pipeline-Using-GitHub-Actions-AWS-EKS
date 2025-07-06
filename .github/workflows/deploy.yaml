@@ -42,7 +42,12 @@ jobs:
 
     - name: Update kubeconfig for EKS
       run: |
-        aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
+        aws eks update-kubeconfig \
+          --region ${{ secrets.AWS_REGION }} \
+          --name ${{ secrets.EKS_CLUSTER_NAME }}
+
+        echo "Verifying Kubernetes access..."
+        kubectl get nodes
 
     - name: Deploy with Helm
       run: |
