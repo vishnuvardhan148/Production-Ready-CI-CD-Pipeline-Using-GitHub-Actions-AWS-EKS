@@ -27,30 +27,9 @@ The pipeline automatically builds, pushes, and deploys a Dockerized Node.js appl
 ---
 
 ## 🧭 Architecture Diagram (PlantUML)
-```plantuml
-@startuml
-actor Developer
-cloud GitHub
-node "GitHub Actions" {
-  component "Build + Push Docker Image" as CI1
-  component "Helm Deploy to EKS" as CD2
-}
-cloud "AWS Cloud" {
-  folder "ECR" {
-    database "Docker Image" as ECR
-  }
-  node "EKS Cluster" {
-    component "K8s NodeGroup"
-    component "Helm Chart"
-    component "Node.js Pod"
-  }
-}
+```
+![Banner](images/Architecture_Diagram.png)
 
-Developer --> GitHub : Push to main
-GitHub --> CI1 : Trigger Workflow
-CI1 --> ECR : Push Image
-CD2 --> EKS Cluster : Deploy App with Helm
-@enduml
 ```
 
 ---
