@@ -20,6 +20,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+
+    - name: Install Helm
+      uses: azure/setup-helm@v3
+      with:
+        version: 'latest'
+
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
@@ -30,11 +40,13 @@ jobs:
         docker build -t $IMAGE_URI .
         docker push $IMAGE_URI
 
-    - name: Update kubeconfig
+    - name: Update kubeconfig for EKS
       run: |
         aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
 
-    - name: Helm upgrade
+    - name: Deploy with Helm
       run: |
-        helm upgrade node-app ./eks-node-app --set image.repository=${{ secrets.ECR_REPO_URI }} --set image.tag=latest
-
+        helm upgrade node-app ./eks-node-app \
+          --install \
+          --set image.repository=${{ secrets.ECR_REPO_URI }} \
+          --set image.tag=latest
