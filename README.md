@@ -141,7 +141,7 @@ aws iam delete-role --role-name github-actions-role-name
 ---
 
 ## 💬 Let's Connect
-If you're a recruiter or cloud enthusiast and want to talk DevOps, feel free to connect on [LinkedIn](https://www.linkedin.com/in/vishnuvardhan148/)!
+If you're a recruiter or cloud enthusiast and want to talk DevOps, feel free to connect on [LinkedIn](https://www.linkedin.com/in/vishnu-vardhan-gurram/)!
 
 ---
 
